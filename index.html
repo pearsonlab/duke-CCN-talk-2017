@@ -104,13 +104,6 @@
 					<video width="70%" align="center" controls autoplay loop src="https://web.duke.edu/mind/level2/faculty/pearson/assets/videos/etho/agonism.ogg" type="video/webm">
 						Your browser does not support the video tag.
 					</video>
-					<aside class="notes" data-markdown>
-					  - two monkeys, shooter and goalie (shooter recorded)
-					  - controlled by joysticks
-					  - roles rotated, animals know each other
-					  - repeated sessions
-					  - rapidly learned, rich dynamics
-					</aside>
 				</section>
 				<section>
 					<div style="float:left; width:25%">
@@ -133,9 +126,73 @@
 				</section>
 				<section>
 					<h3>Let's imagine a model</h3>
+					<img src="https://web.duke.edu/mind/level2/faculty/pearson/assets/images/nev/model_cartoon.svg" style="background: white">
+				</section>
+				<section data-markdown>
+					###We are not the first
+					- Gallant lab (fMRI) ([Huth 2012](http://www.sciencedirect.com/science/article/pii/S0896627312009348), [Stansbury 2013](http://www.sciencedirect.com/science/article/pii/S0896627313005503))
+					- Continuous latent states ([Park 2014](http://www.nature.com/neuro/journal/v17/n10/abs/nn.3800.html), [Buesing 2014](http://papers.nips.cc/paper/5339-clustered-factor-analysis-of-multineuronal-spike-data), [Archer 2015](https://arxiv.org/abs/1511.07367), [Park 2015](http://papers.nips.cc/paper/5790-unlocking-neural-population-non-stationarities-using-hierarchical-dynamics-models))
+					- Discrete latent states ([Escola 2011](http://www.mitpressjournals.org/doi/abs/10.1162/NECO_a_00118#.WNqSexLythE), [Putzky 2014](http://papers.nips.cc/paper/5338-a-bayesian-model-for-identifying-hierarchically-organised-states-in-neural-population-activity))
+					- ...and many more
+				</section>
+				<section data-markdown>
+					###So what's different?
+					- Previous models: latents capture *internal* dynamics
+						- latents can be driven by stimuli
+						- but vary for presentations of the same stimulus
+					- Our model: latents capture *stimulus* dynamics
+						- each stimulus frame has a set of binary tags
+						- latents are *the same* for repeated stim presentations
 				</section>
 				<section>
-					<h3>Lots of previous work</h3>
+					<h3>Let's put that in math</h3>
+					$$
+					\Lambda_{tu} = \lambda_{0u}
+					\prod_{k=1}^K (\lambda_{zuk})^{z_{tk}}
+					\prod_{r=1}^R (\lambda_{xuk})^{x_{tr}}
+					$$
+					<p>firing rate = baseline * latents * externals</p>
+				</section>
+				<section>
+					<h3>And in diagram form</h3>
+					<img src="https://web.duke.edu/mind/level2/faculty/pearson/assets/images/nev/model_formal.svg" style="background: white">
+				</section>
+				<section data-markdown>
+					###Model fitting
+					We have $p(N|Z, \Theta)$
+
+					We want $p(Z, \Theta | N) \propto p(N|Z, \Theta)\, p(Z) \, p(\Theta)$
+
+					But too hard to do Bayes' Rule exactly!
+				</section>
+				<section data-markdown>
+					> Do you want the right answer to the wrong question or the wrong answer to the right question? I think you want the latter.
+					>
+					> &mdash; David Blei
+				</section>
+				<section data-markdown>
+					###Variational Bayesian (VB) Inference
+					- Replace true posterior $p$ with *approximate* posterior $q$
+					- Minimize "distance" $KL(q \Vert p)$ between actual and approximate posteriors
+					- Same as maximizing the evidence lower bound (ELBO): $\log p(N)$
+				</section>
+				<section>
+					<h3>Experiment I: Synthetic data</h3>
+					<img src="https://web.duke.edu/mind/level2/faculty/pearson/assets/images/nev/synthetic.svg" style="background: white">
+				</section>
+				<section>
+					<h3>Experiment II: Parietal Cortex</h3>
+					<img src="https://web.duke.edu/mind/level2/faculty/pearson/assets/images/nev/roitman.svg" style="background: white; width:80%">
+					<p class="ref">Roitman and Shadlen (<em>J. Neuro.</em>, 2002)</p>
+				</section>
+				<section>
+					<h3>Experiment III: Temporal Cortex</h3>
+					<img src="https://web.duke.edu/mind/level2/faculty/pearson/assets/images/nev/imgclust_web.svg" style="background: white; width:100%">
+					<p class="ref">McMahon et al. (<em>PNAS</em>, 2014)</p>
+				</section>
+				<section>
+					<h3>Experiment III: Temporal Cortex</h3>
+					<img src="https://web.duke.edu/mind/level2/faculty/pearson/assets/images/nev/imgclust_neurons.svg" style="background: white; width:100%">
 				</section>
 				<section>
 					<div style="float:left; width:25%">
