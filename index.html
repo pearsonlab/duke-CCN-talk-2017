@@ -224,6 +224,10 @@
 					- Goal is to look for patterns that **suggest new experiments.**
 				</section>
 				<section>
+					<h3>Mind reading 101</h3>
+					<img src="http://www.wnd.com/files/2016/11/Trump-Romney-TW.jpg" >
+				</section>
+				<section>
 					<div style="float:left; width:25%">
 						<img src="https://web.duke.edu/mind/level2/faculty/pearson/assets/images/sfn2016/shariq.jpg" >
 						<p>Shariq Iqbal</p>
@@ -241,7 +245,13 @@
 						<p>Michael Platt</p>
 					</div>
 				</section>
-				<section data-background-image="https://web.duke.edu/mind/level2/faculty/pearson/assets/images/sfn2016/macaques.jpg">
+				<section data-background-image="https://web.duke.edu/mind/level2/faculty/pearson/assets/images/ccn2017/monkey_fruit_tower.jpg">
+					<aside class="notes" data-markdown>
+						### competition is everywhere
+						- need to figure out what others' goals are
+						- we infer goals from movement
+							- Stanislavsky
+					</aside>
 				</section>
 				<section data-background-image="https://web.duke.edu/mind/level2/faculty/pearson/assets/images/sfn2016/chess.jpg">
 					<aside class="notes" data-markdown>
@@ -255,7 +265,8 @@
 				</section>
 				<section data-background-image="https://web.duke.edu/mind/level2/faculty/pearson/assets/images/sfn2016/penalty-shot.jpg">
 					<aside class="notes" data-markdown>
-						- Intrinsically social
+						- Doesn't matter if it's social
+							- Requires anticipating another agent
 						- Repeatable, but lots of variation
 						- Decisions tightly linked to movement
 					</aside>
@@ -275,12 +286,12 @@
 				</section>
 				<section>
 					<div style="width: 50%; float: left; text-align: left">
-						<video autoplay loop  src="https://web.duke.edu/mind/level2/faculty/pearson/assets/videos/penaltyshot/sess130_trace_new.mp4" type="video/mp4" id="trace_video">
+						<video autoplay loop  src="https://web.duke.edu/mind/level2/faculty/pearson/assets/videos/penaltyshot/real_trial.mp4" type="video/mp4" id="trace_video">
 							Your browser does not support the video tag.
 						</video>
 						<script>
 						var vid = document.getElementById("trace_video");
-vid.playbackRate = 0.5;
+vid.playbackRate = 1.;
 						</script>
 					</div>
 					<div style="width: 50%; float: right; font-size: .9em" >
@@ -292,11 +303,17 @@ vid.playbackRate = 0.5;
 						</ul>
 					</div>
 				</section>
+				<section>
+					<h3>Real trials</h3>
+					<div style="width: 50%; margin: auto">
+						<img src="https://web.duke.edu/mind/level2/faculty/pearson/assets/images/penaltyshot/paper_figs/real_traces.svg" alt="">
+					</div>
+				</section>
 				<section data-markdown>
 					### Our approach
-					- borrow from control theory, time series
-					- structured black box models (pieces make sense)
-					- neural networks for flexible fitting
+					- Borrow from control theory, time series
+					- Structured black box models (pieces make sense)
+					- Neural networks for flexible fitting
 				</section>
 				<section>
 					<h3>Modeling I</h3>
@@ -320,30 +337,47 @@ vid.playbackRate = 0.5;
 				</section>
 				<section>
 					<h3>Modeling II</h3>
-					One (of many) assumptions we could make:
+					Assumption: PID control
 					$$
-					u_t = f(y_t, y_{1:t-1}) + \eta_t
+					u_t = u_{t-1} + L * (g_t - y_{t-1}) + \epsilon_t
 					$$
 					<br>
-					<h5>Control signals are driven by a sum:</h5>
 					<ul>
-					  <li>current state: $y_t$</li>
-					  <li>past trajectory: $y_{1:t-1}$</li>
-					  <li>nonlinear transformation: $f$</li>
-					  <li>noisy "driving" input: $\eta_t$</li>
+					  <li>linear control model: $L$</li>
+					  <li>goal (set point): $g_{t}$</li>
+					  <li>error signal: $e_t \equiv g_{t} - y_{t-1}$</li>
+					  <li>observation noise: $\epsilon_t$</li>
 				  </ul>
 				</section>
 				<section>
 					<h3>Modeling III</h3>
+					<h5>Goal model:</h5>
 					$$
-					u_t = f(y_t, y_{1:t-1}) + \eta_t
+					\log p(g) = -\beta E(g|s) - \log Z \\
+					E(g|s) = \sum_t \left[ \frac{1}{2} \Vert g_t - g_{t-1}\Vert^2 + U(g_t, s_t)\right]
 					$$
 					<br>
 					<h5>How do we interpret this?</h5>
 					<ul>
-						<li>$f$: fixed, deterministic, reactive</li>
-						<li>$\eta$: trial-specific, "innovation," residual</li>
+						<li>Goals minimize an "energy"</li>
+						<li>"Potential" $U$ captures player interaction</li>
 					</ul>
+				</section>
+				<section>
+					<h3>Modeling IV</h3>
+					<ul>
+						<li>$U$ is a problem</li>
+						<li>What if $U$ were just quadratic?</li>
+						<li>Model $e^U$ as a mixture of normals</li>
+						<li>Use a Generative Adversarial Network</li>
+					</ul>
+				</section>
+				<section>
+					<h3>GANsplaining</h3>
+				</section>
+				<section>
+					<h3>Our model</h3>
+					<img src="https://web.duke.edu/mind/level2/faculty/pearson/assets/images/penaltyshot/paper_figs/model_diagram.svg" style="background:white">
 				</section>
 				<section>
 					<h3>Model fitting</h3>
@@ -351,8 +385,8 @@ vid.playbackRate = 0.5;
 					<ul>
 					<li>Encoding model:</li>
 						<ul>
-						<li>$f$: deterministic feedforward neural net</li>
-						<li>$\eta$: $AR(p)$ time series</li>
+						<li>goals: GAN</li>
+						<li>control: PID + Gaussian noise</li>
 						</ul>
 					<br>
 					<li>Decoding model:</li>
