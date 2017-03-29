@@ -374,6 +374,17 @@ vid.playbackRate = 1.;
 				</section>
 				<section>
 					<h3>GANsplaining</h3>
+					<div class="wrapper" style="">
+						<img
+						src="https://web.duke.edu/mind/level2/faculty/pearson/assets/images/sfn2016/shariq.jpg"
+						style="grid-column: 2/3">
+						<img
+						src="https://web.duke.edu/mind/level2/faculty/pearson/assets/images/ccn2017/jmp_square.png"
+						style="grid-column: 3/4">
+						<div style="grid-column: 2/3; grid-row: 2/3; ">
+							<img src="https://web.duke.edu/mind/level2/faculty/pearson/assets/images/ccn2017/jmp_square.png">
+						</div>
+					</div>
 				</section>
 				<section>
 					<h3>Our model</h3>
@@ -385,7 +396,7 @@ vid.playbackRate = 1.;
 					<ul>
 					<li>Encoding model:</li>
 						<ul>
-						<li>goals: GAN</li>
+						<li>goals: cGAN</li>
 						<li>control: PID + Gaussian noise</li>
 						</ul>
 					<br>
@@ -398,23 +409,18 @@ vid.playbackRate = 1.;
 				</section>
 				<section>
 					<h3>It fits!</h3>
-					<img  src="https://web.duke.edu/mind/level2/faculty/pearson/assets/images/penaltyshot/pos_fit.svg" style="border: none; background: none; box-shadow: none">
-				</img>
-				</section>
-				<section>
-					<h3>A tougher test</h3>
 					<div style="width: 50%; float: left; text-align: left">
-						<img  src="https://web.duke.edu/mind/level2/faculty/pearson/assets/images/penaltyshot/vel_fit_shooter_new.svg" style="border: none; background: none; box-shadow: none">
+						<img  src="https://web.duke.edu/mind/level2/faculty/pearson/assets/images/penaltyshot/pos_fit.svg" style="border: none; background: none; box-shadow: none">
 						</img>
 					</div>
 					<div style="width: 50%; float: right; text-align: left">
-						<img  src="https://web.duke.edu/mind/level2/faculty/pearson/assets/images/penaltyshot/vel_fit_goalie_new.svg" style="border: none; background: none; box-shadow: none">
+						<img  src="https://web.duke.edu/mind/level2/faculty/pearson/assets/images/penaltyshot/paper_figs/single_trial_control.svg" style="border: none; background: none; box-shadow: none">
 						</img>
 					</div>
 				</section>
 				<section>
 					<h3>Generated Trials</h3>
-					<video width="70%" align="center" controls autoplay loop src="https://web.duke.edu/mind/level2/faculty/pearson/assets/videos/penaltyshot/nnlds_model_AR10_trend_gen_trials_new.mp4" type="video/mp4">
+					<video width="70%" align="center" controls autoplay loop src="https://web.duke.edu/mind/level2/faculty/pearson/assets/videos/penaltyshot/gen_data.mp4" type="video/mp4">
 						Your browser does not support the video tag.
 					</video>
 					<aside class="notes" data-markdown>
@@ -427,21 +433,37 @@ vid.playbackRate = 1.;
 					</aside>
 				</section>
 				<section>
-					<h3>Innovations matter</h3>
-					<div style="width: 50%; float: left; text-align: left">
-						<img  src="https://web.duke.edu/mind/level2/faculty/pearson/assets/images/penaltyshot/pred_cont_dev.svg" style="border: none; background: none; box-shadow: none">
-						</img>
+					<h3>Generated trials</h3>
+					<div style="width: 50%; float: left">
+						<img src="https://web.duke.edu/mind/level2/faculty/pearson/assets/images/penaltyshot/paper_figs/real_traces.svg" alt="">
 					</div>
-					<div style="width: 50%; float: right; text-align: left">
-						<img  src="https://web.duke.edu/mind/level2/faculty/pearson/assets/images/penaltyshot/pred_cont_nodev.svg" style="border: none; background: none; box-shadow: none">
-						</img>
+					<div style="width: 50%; float: right">
+						<img src="https://web.duke.edu/mind/level2/faculty/pearson/assets/images/penaltyshot/paper_figs/gen_traces.svg" alt="">
 					</div>
 				</section>
+				<section>
+					<h3>A sample trial</h3>
+					<video width="70%" align="center" controls autoplay loop src="https://web.duke.edu/mind/level2/faculty/pearson/assets/videos/penaltyshot/real_trial.mp4" type="video/mp4">
+						Your browser does not support the video tag.
+					</video>
+				</section>
+				<section>
+					<h3>Inferred goals</h3>
+					<video width="70%" align="center" controls autoplay loop src="https://web.duke.edu/mind/level2/faculty/pearson/assets/videos/penaltyshot/real_trial_goals.mp4" type="video/mp4">
+						Your browser does not support the video tag.
+					</video>
+				</section>
+				<section>
+					<h3>Value function</h3>
+					<video width="70%" align="center" controls autoplay loop src="https://web.duke.edu/mind/level2/faculty/pearson/assets/videos/penaltyshot/real_trial_value.mp4" type="video/mp4">
+						Your browser does not support the video tag.
+					</video>
+				</section>
 				<section data-markdown>
-					###Conclusions
+					###What did we do?
 					- Dynamic control tasks let us leverage motor behavior to study cognitive and social decisions.
 					- Structured black-box models allow us to carve behavior into interpretable pieces.
-					- Control models suggest candidate signals for correlation with neural data.
+					- We inferred a value function capable of explaining behavior in terms of goals.
 				</section>
 				<section>
 					<div>
@@ -486,6 +508,19 @@ vid.playbackRate = 1.;
 					<div style="width: 50%; float: right">
 						<img src="https://web.duke.edu/mind/level2/faculty/pearson/assets/images/ccn2017/terminator_monkey.jpg" alt="">
 					</div>
+				</section>
+				<section>
+					<h3>Probing the model</h3>
+					<div style="width: 50%; float: left">
+						<img src="https://web.duke.edu/mind/level2/faculty/pearson/assets/images/penaltyshot/paper_figs/init_both_down.svg" alt="">
+					</div>
+					<div style="width: 50%; float: right">
+						<img src="https://web.duke.edu/mind/level2/faculty/pearson/assets/images/penaltyshot/paper_figs/init_goalieup_balldown.svg" alt="">
+					</div>
+				</section>
+				<section>
+					<h3>Initial goal distribution</h3>
+					<img src="https://web.duke.edu/mind/level2/faculty/pearson/assets/images/penaltyshot/paper_figs/g0_fit.svg" alt="">
 				</section>
 			</div>
 		</div>
