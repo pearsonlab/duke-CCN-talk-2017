@@ -119,6 +119,7 @@
 					<video width="70%" align="center" controls autoplay loop src="https://web.duke.edu/mind/level2/faculty/pearson/assets/videos/etho/agonism.ogg" type="video/webm">
 						Your browser does not support the video tag.
 					</video>
+					<p class="ref">Adams, Pearson, and Platt (in prep)</p>
 				</section>
 				<section>
 					<div style="float:left; width:25%">
@@ -180,9 +181,14 @@
 				</section>
 				<section data-markdown>
 					###Model fitting
-					We have $p(N|Z, \theta)$
+					We have $p(N|Z, \Theta)$
 
-					We want $p(Z, \theta | N) \propto p(N|Z, \theta)\, p(Z) \, p(\theta)$
+					$Z$: latent variables, $\Theta$: model parameters
+
+					We want
+					$$
+					p(Z, \Theta | N) \propto p(N|Z, \Theta)\, p(Z) \, p(\Theta)
+					$$
 
 					But too hard to do Bayes' Rule exactly!
 				</section>
