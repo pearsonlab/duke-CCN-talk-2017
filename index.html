@@ -163,11 +163,16 @@
 				<section>
 					<h3>Let's put that in math</h3>
 					$$
-					\Lambda_{tu} = \lambda_{0u}
+					\begin{align}
+					N_{tu} &\sim \mathrm{Poisson}(\Lambda_{tu}\cdot\theta) \\
+					\theta &\sim \mathrm{Gamma}(s, s) \\
+					\Lambda_{tu} &= \lambda_{0u}
 					\prod_{k=1}^K (\lambda_{zuk})^{z_{tk}}
 					\prod_{r=1}^R (\lambda_{xuk})^{x_{tr}}
+					\end{align}
 					$$
-					<p>firing rate = baseline * latents * externals</p>
+
+					<p>firing rate = baseline * latents * externals * noise</p>
 				</section>
 				<section>
 					<h3>And in diagram form</h3>
@@ -381,9 +386,62 @@ vid.playbackRate = 1.;
 						<img
 						src="https://web.duke.edu/mind/level2/faculty/pearson/assets/images/ccn2017/jmp_square.png"
 						style="grid-column: 3/4">
-						<div style="grid-column: 2/3; grid-row: 2/3; ">
-							<img src="https://web.duke.edu/mind/level2/faculty/pearson/assets/images/ccn2017/jmp_square.png">
+
+						<!-- pop up item and response -->
+						<div class="fragment fade-up" style="grid-column: 2/3; grid-row: 2/3" data-fragment-index="1">
+							<div class="fragment fade-out" data-fragment-index="3">
+								<img
+								class="grid-img"
+								src="https://web.duke.edu/mind/level2/faculty/pearson/assets/images/ccn2017/bad_dollar.jpg">
+							</div>
 						</div>
+						<img
+						class="fragment current-visible grid-img"
+						src="https://web.duke.edu/mind/level2/faculty/pearson/assets/images/ccn2017/red_x.png"
+						style="grid-column: 3/4; grid-row: 2/3"
+						data-fragment-index="2">
+
+						<!-- pop up item and response -->
+						<div class="fragment fade-up" style="grid-column: 2/3; grid-row: 2/3" data-fragment-index="4">
+							<div class="fragment fade-out" data-fragment-index="6">
+								<img
+								class="grid-img"
+								src="https://web.duke.edu/mind/level2/faculty/pearson/assets/images/ccn2017/wizard_lincoln.jpg">
+							</div>
+						</div>
+						<img
+						class="fragment current-visible grid-img"
+						src="https://web.duke.edu/mind/level2/faculty/pearson/assets/images/ccn2017/red_x.png"
+						style="grid-column: 3/4; grid-row: 2/3"
+						data-fragment-index="5">
+
+						<!-- pop up item and response -->
+						<div class="fragment fade-up" style="grid-column: 2/3; grid-row: 2/3" data-fragment-index="7">
+							<div class="fragment fade-out" data-fragment-index="9">
+								<img
+								class="grid-img"
+								src="https://web.duke.edu/mind/level2/faculty/pearson/assets/images/ccn2017/kiss_jackson.jpg">
+							</div>
+						</div>
+						<img
+						class="fragment current-visible grid-img"
+						src="https://web.duke.edu/mind/level2/faculty/pearson/assets/images/ccn2017/red_x.png"
+						style="grid-column: 3/4; grid-row: 2/3"
+						data-fragment-index="8">
+
+						<!-- pop up item and response -->
+						<div class="fragment fade-up" style="grid-column: 2/3; grid-row: 2/3" data-fragment-index="10">
+							<div class="fragment fade-out" data-fragment-index="12">
+								<img
+								class="grid-img"
+								src="https://web.duke.edu/mind/level2/faculty/pearson/assets/images/ccn2017/dollar_bill.jpg">
+							</div>
+						</div>
+						<img
+						class="fragment current-visible grid-img"
+						src="https://web.duke.edu/mind/level2/faculty/pearson/assets/images/ccn2017/green_check.png"
+						style="grid-column: 3/4; grid-row: 2/3"
+						data-fragment-index="11">
 					</div>
 				</section>
 				<section>
