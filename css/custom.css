@@ -22,5 +22,6 @@ p.ref {
 .reveal section img.grid-img {
     background: none;
     border: none;
+    box-shadow: none;
     object-fit: contain;
 }
