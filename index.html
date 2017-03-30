@@ -387,11 +387,15 @@ vid.playbackRate = 1.;
 					<h3>GANsplaining</h3>
 					<div class="wrapper" style="">
 						<img
+						class="fragment fade-out"
 						src="https://web.duke.edu/mind/level2/faculty/pearson/assets/images/sfn2016/shariq.jpg"
-						style="grid-column: 2/3">
+						style="grid-column: 2/3; grid-row: 1/2"
+						data-fragment-index="12">
 						<img
+						class="fragment fade-out"
 						src="https://web.duke.edu/mind/level2/faculty/pearson/assets/images/ccn2017/jmp_square.png"
-						style="grid-column: 3/4">
+						style="grid-column: 3/4; grid-row: 1/2"
+						data-fragment-index="13">
 
 						<!-- pop up item and response -->
 						<div class="fragment fade-up" style="grid-column: 2/3; grid-row: 2/3" data-fragment-index="1">
@@ -448,7 +452,37 @@ vid.playbackRate = 1.;
 						src="https://web.duke.edu/mind/level2/faculty/pearson/assets/images/ccn2017/green_check.png"
 						style="grid-column: 3/4; grid-row: 2/3"
 						data-fragment-index="11">
+
+						<!-- pop up ANN images (with captions)-->
+						<div
+						class="fragment fade-up"
+						style="grid-column: 2/3; grid-row: 1/2"
+						data-fragment-index="12" >
+							<div>
+								<img
+								src="https://web.duke.edu/mind/level2/faculty/pearson/assets/images/ccn2017/neural_network.svg"
+								style="background: white; vertical-align: bottom; margin-bottom: 0">
+								<p style="vertical-align: top; margin: 0">Generator</p>
+							</div>
+						</div>
+						<div
+						class="fragment fade-up"
+						style="grid-column: 3/4; grid-row: 1/2"
+						data-fragment-index="13" >
+							<div>
+								<img
+								src="https://web.duke.edu/mind/level2/faculty/pearson/assets/images/ccn2017/neural_network.svg"
+								style="background: white; vertical-align: bottom; margin-bottom: 0">
+								<p style="vertical-align: top; margin: 0">Discriminator</p>
+							</div>
+						</div>
+						<!-- <img
+						class="fragment fade-up"
+						src="https://web.duke.edu/mind/level2/faculty/pearson/assets/images/ccn2017/neural_network.svg"
+						style="grid-column: 3/4; grid-row: 1/2; background: white"
+						data-fragment-index="12"> -->
 					</div>
+
 				</section>
 				<section>
 					<h3>Our model</h3>
